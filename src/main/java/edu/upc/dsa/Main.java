@@ -1,0 +1,58 @@
+package edu.upc.dsa;
+
+import edu.upc.dsa.EmptyQueueException;
+import edu.upc.dsa.FullQueueException;
+import edu.upc.dsa.Queue;
+import edu.upc.dsa.QueueImpl;
+
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.util.Arrays;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Queue<Integer> q = new QueueImpl<Integer>(5);
+        try {
+
+
+
+        q.push(1);
+            System.out.println(q.size());
+        q.push(2);
+            System.out.println(q.size());
+/*        q.push(3);
+            System.out.println(q.size());
+        q.push(4);
+            System.out.println(q.size());
+        q.push(5);
+            System.out.println(q.size());
+
+          q.push(6);
+*/
+
+
+            Class theClass = q.getClass();
+            Method[] llistaMetodes = theClass.getDeclaredMethods();
+
+            System.out.println(Arrays.asList(llistaMetodes));
+
+            Field[] llistaAttr = theClass.getDeclaredFields();
+
+            System.out.println(Arrays.asList(llistaAttr));
+
+
+
+        }
+        catch (FullQueueException | EmptyQueueException fullExp) {
+            //
+            System.out.println("EXCEPCIÓ!!");
+            fullExp.printStackTrace();
+        }
+        /*catch (EmptyQueueException empty) {
+            System.out.println("EXCEPCIÓ!!");
+            empty.printStackTrace();
+        }*/
+
+    }
+}
